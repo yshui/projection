@@ -124,25 +124,15 @@ fn generate_result_impl(_p: &ProjectionStruct, _out: &mut TokenStream2) {}
 #[proc_macro_attribute]
 pub fn projection(args: TokenStream, input: TokenStream) -> TokenStream {
 	fn imp(attr: AttributeArgs, input: DeriveInput) -> Result<TokenStream, ::darling::Error> {
-		use ::darling::ast::Data::*;
 		use ::quote::ToTokens;
-		Diagnostic::new(Level::Note, "Test").emit();
 		let project = ProjectionStruct::from_derive_input(&input)?;
 		let project_args = ProjectionArgs::from_list(&attr)?;
 		let mut ret = TokenStream::new().into();
-		match project.data {
-			Enum(_) => panic!(),
-			Struct(ref s) => {
-				for f in s.iter() {
-					println!("{:?}", f.ident);
-				}
-				if project_args.option {
-					generate_option_impl(&project, &mut ret);
-				}
-				if project_args.result {
-					generate_result_impl(&project, &mut ret);
-				}
-			}
+		if project_args.option {
+			generate_option_impl(&project, &mut ret);
+		}
+		if project_args.result {
+			generate_result_impl(&project, &mut ret);
 		}
 		input.to_tokens(&mut ret);
 		Ok(ret.into())

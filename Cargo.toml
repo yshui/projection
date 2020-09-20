@@ -1,11 +1,11 @@
 [package]
 name = "projection"
 description = "Projection into Option<T>"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Yuxuan Shui <yshuiv7@gmail.com>"]
 edition = "2018"
 license = "BSL-1.0"
 repository = "https://github.com/yshui/projection"
 
 [dependencies]
-projection-macros = { path = "./macros", version = "=0.1.0" }
+projection-macros = { path = "./macros", version = "=0.1.1" }
