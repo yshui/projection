@@ -1,0 +1,17 @@
+[package]
+name = "projection-macros"
+version = "0.1.0"
+authors = ["Yuxuan Shui <yshuiv7@gmail.com>"]
+edition = "2018"
+license = "BSL-1.0"
+repository = "https://github.com/yshui/projection"
+description = "Macros for projection"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+darling = "0.10.2"
+syn = "1.0.41"
+quote = "1.0.7"
+proc-macro2 = "1.0.21"
